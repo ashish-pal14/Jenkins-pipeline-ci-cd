@@ -1,0 +1,37 @@
+The pipeline defined in `Jenkinsfile` runs the following stages:
+
+1. **Checkout**
+   - Pulls the latest code from the `main` branch.
+
+2. **Build**
+   - Builds a Docker image using the `Dockerfile`.
+   - Tags the image as `my-simple-app`.
+
+3. **Test**
+   - *(You can add test scripts here)*
+
+4. **Deploy**
+   - Stops and removes any existing container named `myapp`.
+   - Runs the new Docker container in detached mode.
+
+## 🐳 Dockerfile
+
+A simple Python application is containerized using `python:3.9-slim`.
+
+It:
+- Sets the working directory to `/app`
+- Copies `requirements.txt` and installs dependencies
+- Copies the app code and runs `app.py`
+
+## 🚀 How to Use
+
+1. Make sure Jenkins is installed and has access to Docker.
+2. Create a Jenkins Pipeline job.
+3. Use **"Pipeline script from SCM"** and point it to this GitHub repo.
+4. Trigger the build.
+
+## 📂 Example `requirements.txt`
+
+```text
+flask
+requests
